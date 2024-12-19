@@ -3,3 +3,7 @@ venv/
 
 #ignore json files
 *.json
+
+#ignore the pychace folder
+
+__pychace__/
