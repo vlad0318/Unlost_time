@@ -18,9 +18,8 @@ This will be done using JSON files
 Each task will look like this:
 
 {
-    "tasks":
+    "tasks_name":
     {
-        "task_name": "",
         "time": "",
         "improtance": "",
         "location": "",
@@ -31,4 +30,16 @@ import json
 
 class memory:
     def __init__(self):
-        pass
+        with open('memory.json', 'w') as file: #creates an empty file
+            file.close()
+
+    def add_event(self, event, time, importance, location):
+       task={ event: {
+           "time": time,
+           "importance": importance,
+           "location" : location
+           }
+        }
+       with open('memory.json', 'a') as file:
+           json.dump(task, file, indent=4)
+           file.close
