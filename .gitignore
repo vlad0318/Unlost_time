@@ -6,4 +6,4 @@ venv/
 
 #ignore the pychace folder
 
-__pychace__/
+__pycache__/
