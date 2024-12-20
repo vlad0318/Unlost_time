@@ -21,7 +21,7 @@ Each task will look like this:
     "tasks_name":
     {
         "time": "",
-        "improtance": "",
+        "importance": "",
         "location": "",
     }
 """
@@ -30,16 +30,22 @@ import json
 
 class memory:
     def __init__(self):
-        with open('memory.json', 'w') as file: #creates an empty file
-            file.close()
+        self.tasks={}
 
-    def add_event(self, event, time, importance, location):
-       task={ event: {
-           "time": time,
-           "importance": importance,
-           "location" : location
-           }
-        }
-       with open('memory.json', 'a') as file:
-           json.dump(task, file, indent=4)
-           file.close
+    def add_task(self, name, time, importance, location):
+        self.tasks[name]={"time":time,
+                    "importance":importance,
+                    "location":location}
+
+    def remove_task(self, name):
+        del self.tasks[name]
+    def write(self):
+        with open("memory.json","w") as file:
+            json.dump(self.tasks,file, indent=4)
+            file.close
+
+    def read_json(self):
+        with open("memory.json","r") as file:
+            self.tasks.clear()
+            self.tasks.update(json.load(file))
+            return(self.tasks)
