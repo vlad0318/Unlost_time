@@ -8,9 +8,8 @@ i.add_task("work", "now", "high", "unspecified")
 
 i.write()
 
-x=i.read_json()
+i.read_json()
 
-print(x)
 
 i.remove_task("work")
 
